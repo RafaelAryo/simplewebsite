@@ -1,0 +1,371 @@
+<html>
+    <title>Parsing Data</title>
+    <script src="bootstrap4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bootstrap4/css/bootstrap.min.css"></link>
+   
+        <style>
+        html {
+            min-height: 100%;
+            }   
+        body{ 
+            background-image: url("img/body2.gif");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            }
+        .colorpalevioletred{
+            color: red;
+            }
+        .colorwhite{
+            color: white;
+            height: 50px;
+            margin-left: 10px;
+            }
+        </style>
+    </head>
+    <body onload="update(), mapUpdate()">
+        <div class="row">
+        <div class="col-12">
+        <nav class="navbar navbar-expand-sm" style="background-color: white; font-style: italic; opacity: 0.8;" >
+        <h2>Parsing Data GCS</h2>
+        </nav>
+        <br>
+        <div class="row colorrgb(255, 76, 164)">
+        <div class="col-sm-3" style="color: red;"><h3>&nbsp DATA 1</h3></div>
+        <div class="col-sm-3" style="color: red;"><h3>&nbsp DATA 2</h3></div>
+        <div class="col-sm-3" style="color: red;"><h3>&nbsp DATA 3</h3></div>
+        <div class="col-sm-3" style="color: red;"><h3>&nbsp DATA 4</h3></div>
+        </div>
+        <div class="row colorwhite">
+        <div class="col-sm-3"><h4 id="data1"> data 1</h4></div>
+        <div class="col-sm-3"><h4 id="data2"> data 2</h4></div>
+        <div class="col-sm-3"><h4 id="data3"> data 3</h4></div>
+        <div class="col-sm-3"><h4 id="data4"> data 4</h4></div>
+        </div>
+        <div class="row colorlrgb(255, 76, 164)">
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp DATA 5</h3></div>
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp DATA 6</h3></div>
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp DATA 7</h3></div>
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp DATA 8</h3></div>
+        </div>
+        <div class="row colorwhite">
+        <div class="col-sm-3"><h4 id="data5"> data 5</h4></div>
+        <div class="col-sm-3"><h4 id="data6"> data 6</h4></div>
+        <div class="col-sm-3"><h4 id="data7"> data 7</h4></div>
+        <div class="col-sm-3"><h4 id="data8"> data 8</h4></div>
+        </div>
+        <div class="row colorlrgb(255, 76, 164)">
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp DATA 9</h3></div>
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp DATA 10</h3></div>
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp DATA 11</h3></div>
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp DATA 12</h3></div>
+        </div>
+        <div class="row colorwhite">
+        <div class="col-sm-3"><h4 id="data9"> data 9</h4></div>
+        <div class="col-sm-3"><h4 id="data10"> data 10</h4></div>
+        <div class="col-sm-3"><h4 id="data11">data 11</h4></div>
+        <div class="col-sm-3"><h4 id="data12"> data 12</h4></div>
+        </div>
+        <div class="row colorlrgb(255, 76, 164)">
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp DATA 13</h3></div>
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp DATA 14</h3></div>
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp DATA 15</h3></div>
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp DATA 16</h3></div>
+        </div>
+        <div class="row colorwhite">
+        <div class="col-sm-3"><h4 id="data13"> data 13</h4></div>
+        <div class="col-sm-3"><h4 id="data14"> data 14</h4></div>
+        <div class="col-sm-3"><h4 id="data15"> data 15</h4></div>
+        <div class="col-sm-3"><h4 id="data16"> data 16</h4></div>
+        </div>
+        </div>
+        </div>
+        <div class="row colorrgb(255, 76, 164)">
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp Graphic Chart</h3></div>
+        </div>
+        <div id="chart" height="100px" width="70px"></div>
+        <div id="chart1" height="100px" width="70px"></div>
+        <div id="chart2" height="100px" width="70px"></div>
+        <div id="chart3" height="100px" width="70px"></div>
+        <div class="row colorrgb(255, 76, 164)">
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp 3D Model</h3></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <canvas id="c" style="width:800; height:500;"></canvas>
+        <div class="row colorrgb(255, 76, 164)">
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp SatelliteMap</h3></div>
+        </div>
+        <div id="map" style="height: 800; width: 2500;"></div>
+        <br>
+        <div class="row colorlrgb(255, 76, 164)">
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp Mile</h3></div>
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp Kilo</h3></div>
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp Duration text</h3></div>
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp Duration value</h3></div>
+        </div>
+        <div class="row colorwhite">
+        <div class="col-sm-3"><h4 id="in_mile"> Mile</h4></div>
+        <div class="col-sm-3"><h4 id="in_kilo">  Kilo</h4></div>
+        <div class="col-sm-3"><h4 id="duration_text"> duration text</h4></div>
+        <div class="col-sm-3"><h4 id="duration_value"> duration value</h4></div>
+        
+        <div class="row colorlrgb(255, 76, 164)">
+        <div class="col-sm-3" style="color:red;"><h3>&nbsp From</h3></div>
+        </div>
+        <div class="row colorwhite">
+        <div class="col-sm-20"><h2 id="from"> From</h2></div>
+        
+        <div class="row colorlrgb(255, 76, 164)"></div>
+        <div class="col-sm-1" style="color:red;"><h3>&nbsp To</h3></div>
+        <div class="row colorwhite"></div>
+        <div class="col-sm-20"><h2 id="to">  To</h2></div>
+    <body>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSMD9ehGivjLnS-IUIi2O7Yv5wm-byv6A"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="js/plotly.min.js"></script>
+       
+        
+        
+        <script src="app/data.js"></script>
+        <script src="app/coordinate.js"></script>
+       
+        
+        <script>
+            function getData() {
+                return document.getElementById("data1").innerText;
+            
+            } 
+            var time = new Date();
+    
+            var data = [{
+            x: [time],
+            y: [0],
+            mode: 'lines',
+            line: {color: '#80CAF6'}
+            
+            }]
+            Plotly.newPlot('chart', data);
+    
+            var cnt = 0;
+    
+            var interval = setInterval(function() {
+    
+            var time = new Date();
+    
+            var update = {
+            x:  [[time]],
+            y: [[getData()]]
+            }
+          
+            var olderTime = time.setMinutes(time.getMinutes() - 1);
+            var futureTime = time.setMinutes(time.getMinutes() + 1);
+    
+            var minuteView = {
+                    xaxis: {
+                    type: 'date',
+                    range: [olderTime,futureTime]
+                    }
+                };
+    
+            Plotly.relayout('chart', minuteView);
+            Plotly.extendTraces('chart', update, [0])
+    
+            }, 1000);
+
+       
+        </script>
+
+        <script>
+            function getData1() {
+                return document.getElementById("data2").innerText;
+            
+            } 
+            var time = new Date();
+    
+            var data1 = [{
+            x: [time],
+            y: [0],
+            mode: 'lines',
+            line: {color: 'red'}
+            
+            }]
+            Plotly.newPlot('chart1', data1);
+    
+            var cnt = 0;
+    
+            var interval = setInterval(function() {
+    
+            var time = new Date();
+    
+            var update = {
+            x:  [[time]],
+            y: [[getData1()]]
+            }
+            var olderTime = time.setMinutes(time.getMinutes() - 1);
+            var futureTime = time.setMinutes(time.getMinutes() + 1);
+    
+            var minuteView = {
+                    xaxis: {
+                    type: 'date',
+                    range: [olderTime,futureTime]
+                    }
+                };
+    
+            Plotly.relayout('chart1', minuteView);
+            Plotly.extendTraces('chart1', update, [0])
+    
+            }, 1000);
+
+        
+        </script>
+        <script>
+            function getData2() {
+                return document.getElementById("data3").innerText;
+            
+            } 
+            var time = new Date();
+    
+            var data2 = [{
+            x: [time],
+            y: [0],
+            mode: 'lines',
+            line: {color: 'blue'}
+            
+            }]
+            Plotly.newPlot('chart2', data2);
+    
+            var cnt = 0;
+    
+            var interval = setInterval(function() {
+    
+            var time = new Date();
+    
+            var update = {
+            x:  [[time]],
+            y: [[getData2()]]
+            }
+            
+          
+            var olderTime = time.setMinutes(time.getMinutes() - 1);
+            var futureTime = time.setMinutes(time.getMinutes() + 1);
+    
+            var minuteView = {
+                    xaxis: {
+                    type: 'date',
+                    range: [olderTime,futureTime]
+                    }
+                };
+    
+            Plotly.relayout('chart2', minuteView);
+            Plotly.extendTraces('chart2', update, [0])
+    
+            }, 1000);
+
+        </script>
+        <script>
+            function getData3() {
+                return document.getElementById("data4").innerText;
+            
+            } 
+            var time = new Date();
+    
+            var data3 = [{
+            x: [time],
+            y: [0],
+            mode: 'lines',
+            line: {color: 'yellow'}
+            
+            }]
+            Plotly.newPlot('chart3', data3);
+    
+            var cnt = 0;
+    
+            var interval = setInterval(function() {
+    
+            var time = new Date();
+    
+            var update = {
+            x:  [[time]],
+            y: [[getData3()]]
+            }
+            
+          
+            var olderTime = time.setMinutes(time.getMinutes() - 1);
+            var futureTime = time.setMinutes(time.getMinutes() + 1);
+    
+            var minuteView = {
+                    xaxis: {
+                    type: 'date',
+                    range: [olderTime,futureTime]
+                    }
+                };
+    
+            Plotly.relayout('chart3', minuteView);
+            Plotly.extendTraces('chart3', update, [0])
+    
+            }, 1000);
+
+        </script>
+     
+  
+        </html>
+        <script src="./threejs/build/three.js"></script>
+        <script src="./threejs/build/OrbitControls.js"></script>
+        <script src="./threejs/build/stats.js"></script>
+        
+        <script>
+        function main() {
+        const canvas = document.querySelector('#c');
+        const renderer = new THREE.WebGLRenderer({canvas, alpha: true});
+        const fov = 7;
+        const aspect = 2; // the canvas default
+        const near = 0.1;
+        const far = 1000;
+        const camera = new THREE.PerspectiveCamera(75, aspect, near, far);
+        camera.position.z = 4;
+        //create the shape
+        const scene = new THREE.Scene();
+        renderer.setClearColor( 0x000000, 0.7 ); // the default
+        var geometry = new THREE.CylinderGeometry( 1, 1, 3, 32 );
+        //create a material color or image
+        var material = new THREE.MeshBasicMaterial( {color: 0x66ff99, wireframe: true} );
+        function makeInstance(geometry) {
+        cylinder = new THREE.Mesh( geometry, material );
+        scene.add( cylinder );
+        return cylinder;
+        }
+        const cylinders = [
+        makeInstance(geometry),
+        ];
+        function resizeRendererToDisplaySize(renderer) {
+        const canvas = renderer.domElement;
+        const width = canvas.clientWidth;
+        const height = canvas.clientHeight;
+        const needResize = canvas.width !== width || canvas.height !== height;
+        if (needResize) {
+        renderer.setSize(width, height, false);
+        }
+        return needResize;
+        }
+        //draw scene
+        function render(){
+        if (resizeRendererToDisplaySize(renderer)) {
+        const canvas = renderer.domElement;
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
+        }
+        cylinders.forEach((cylinder) => {
+        cylinder.rotation.x = document.getElementById("data1").innerHTML / Math.PI *0.05;
+        cylinder.rotation.y = document.getElementById("data2").innerHTML / Math.PI *0.005;
+        cylinder.rotation.z = document.getElementById("data3").innerHTML / Math.PI *0.05;
+        });
+        renderer.render( scene,camera );
+        requestAnimationFrame(render);
+        }
+        requestAnimationFrame(render);
+        }
+        main();
+        </script>
+                
